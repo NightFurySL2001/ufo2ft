@@ -770,13 +770,17 @@ class Instantiator:
                 try:
                     if key == "openTypeNameRecords":
                         # openTypeNameRecords is a list of dicts of name records
-                        assert isinstance(value, list), "openTypeNameRecords must be a list"
-                        
+                        assert isinstance(
+                            value, list
+                        ), "openTypeNameRecords must be a list"
+
                         # directly save if openTypeNameRecords is None
                         if font.info.openTypeNameRecords is None:
                             for dict_name_record in value:
                                 # strip the string value to prevent XML whitespace issues
-                                dict_name_record["string"] = dict_name_record["string"].strip()
+                                dict_name_record["string"] = dict_name_record[
+                                    "string"
+                                ].strip()
                             font.info.openTypeNameRecords = value
                             continue
                         # merge the existing openTypeNameRecords with the new ones
